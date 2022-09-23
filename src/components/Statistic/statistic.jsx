@@ -7,6 +7,8 @@ export class Statistics extends Component {
     good: 0,
     neutral: 0,
     bad: 0,
+    totalFeedback: 0,
+    PositiveFeedback: 0,
   };
 
   leaveVote = propertyName => {
@@ -18,8 +20,25 @@ export class Statistics extends Component {
     });
   };
 
+  countTotalFeedback() {
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
+  }
+
+  countPositiveFeedbackPercentage() {
+    const { good } = this.state;
+    if (!good) {
+      return 0;
+    }
+    const value = this.countTotalFeedback();
+    const result = (good / value) * 100;
+    return Number(result.toFixed(0));
+  }
+
   render() {
     const { good, neutral, bad } = this.state;
+    const totalFeedback = this.countTotalFeedback();
+    const countPercentage = this.countPositiveFeedbackPercentage();
 
     return (
       <div>
@@ -41,6 +60,10 @@ export class Statistics extends Component {
           <p>Good: {good}</p>
           <p>Neutral: {neutral}</p>
           <p>Bad: {bad}</p>
+        </div>
+        <div>
+          <p>Total: {totalFeedback}</p>
+          <p>Positive feedback: {countPercentage}% </p>
         </div>
       </div>
     );
