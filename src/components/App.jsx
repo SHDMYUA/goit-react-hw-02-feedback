@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { Section } from './Sections/Section';
-import { Buttons } from './Buttons/Buttons';
+// import { Buttons } from './Buttons/Buttons';
 import { Notification } from './NotificationMessages/NothingMessage';
 import { Statistics } from './Statistic/Statistic';
 
@@ -40,9 +40,9 @@ export class App extends Component {
 
     return (
       <>
-        <Section title="Please leave feedback">
+        {/* <Section title="Please leave feedback">
           <Buttons options={nameVote} leaveVote={this.leaveVote} />
-        </Section>
+        </Section> */}
 
         {totalFeedback === 0 ? (
           <Notification message="No feedback given" />
