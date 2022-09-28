@@ -1,4 +1,5 @@
 import shortid from 'shortid';
+import css from './Buttons.module.css';
 import PropTypes from 'prop-types';
 
 export const Buttons = ({ options, leaveVote }) => {
@@ -10,6 +11,7 @@ export const Buttons = ({ options, leaveVote }) => {
           type="button"
           name={option}
           onClick={leaveVote}
+          className={css.button}
         >
           {option}
         </button>
